@@ -33,8 +33,8 @@ def update_hyllypaikka(db: Session, hyllypaikka_id: str, hyllypaikka: schemas.Hy
     return db_hyllypaikka
 
 
-def delete_hyllypaikka(db: Session, id: str):
-    db_hyllypaikka = get_hyllypaikka(db, id)
+def delete_hyllypaikka(db: Session, hyllypaikka_id: str):
+    db_hyllypaikka = get_hyllypaikka(db, hyllypaikka_id)
     if db_hyllypaikka:
         db.delete(db_hyllypaikka)
         db.commit()

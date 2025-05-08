@@ -14,7 +14,7 @@ router = APIRouter(
 
 @router.post("/", response_model=schemas.HyllypaikkaBase, status_code=status.HTTP_201_CREATED)
 def create_hyllypaikka(hyllypaikka: schemas.HyllypaikkaCreate, db: Session = Depends(get_db)):
-    db_hyllypaikka = crud.get_hyllypaikka(db, id=hyllypaikka.id)
+    db_hyllypaikka = crud.get_hyllypaikka(db, hyllypaikka_id=hyllypaikka.id)
     if db_hyllypaikka:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
