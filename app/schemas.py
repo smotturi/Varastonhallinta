@@ -3,8 +3,7 @@ from typing import List, Optional
 
 from datetime import datetime
 
-
-
+# Määrittelee Pydantic-mallit tiedon validointiin ja siirtoon
 
 # Hyllypaikka schemas
 

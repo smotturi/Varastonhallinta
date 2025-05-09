@@ -6,6 +6,8 @@ from typing import List, Optional
 from app import models, schemas, crud
 from app.database import get_db
 
+# API-reitit tuotteiden käsittelyyn:
+
 router = APIRouter(
     prefix="/tuotteet",
     tags=["tuotteet"],
@@ -88,14 +90,6 @@ def update_tuote(tuote_id: str, tuote: schemas.TuoteMuokkaa, db: Session = Depen
             )
     
     return crud.update_tuote(db=db, tuote_id=tuote_id, tuote=tuote)
-    #updated_tuote = crud.update_tuote(db=db, tuote_id=tuote_id, tuote=tuote)
-    #if updated_tuote is None:
-     #   return JSONResponse(
-      #      status_code=status.HTTP_200_OK,
-       #     content={"message": f"Tuote id:llä {tuote_id} poistettu koska määrä <= 0"}
-        #)
-    
-    #return updated_tuote
 
 @router.delete("/{tuote_id}", response_model=schemas.Tuote)
 def delete_tuote(tuote_id: str, db: Session = Depends(get_db)):

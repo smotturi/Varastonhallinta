@@ -9,6 +9,7 @@ from app.routes import hyllypaikat, tuotteet
 # Luo tietokantataulut SQLAlchemyn avulla
 models.Base.metadata.create_all(bind=engine)
 
+# Alustaa FastAPI sovelluksen
 app = FastAPI()
 
 # CORS-asetukset, sallitaan pyynnöt kaikista lähteistä kehitysympäristössä
@@ -33,6 +34,7 @@ def read_root():
         "dokumentaatio": "/docs"
     }
 
+# Käynnistys
 
 if __name__ == "__main__":
     uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)

@@ -5,6 +5,8 @@ from typing import List, Optional
 from app import models, schemas, crud
 from app.database import get_db
 
+# API-reitit hyllypaikkojen käsittelyyn
+
 router = APIRouter(
     prefix="/hyllypaikat",
     tags=["hyllypaikat"],

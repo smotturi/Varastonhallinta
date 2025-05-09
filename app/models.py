@@ -4,6 +4,8 @@ import sqlalchemy.sql.functions as func
 
 from app.database import Base
 
+    # Määrittelee tietokantataulut SQLAlchemyn avulla
+
 class Hyllypaikka(Base):
     __tablename__ = "hyllypaikat"
 
