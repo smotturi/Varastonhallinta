@@ -11,8 +11,8 @@ def get_hyllypaikka(db: Session, hyllypaikka_id: str):
     return db.query(models.Hyllypaikka).filter(models.Hyllypaikka.id == hyllypaikka_id).first()
 
 
-def get_hyllypaikat(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.Hyllypaikka).offset(skip).limit(limit).all()
+def get_hyllypaikat(db: Session):
+    return db.query(models.Hyllypaikka).all()
 
 
 def create_hyllypaikka(db: Session, hyllypaikka: schemas.HyllypaikkaCreate):
@@ -48,22 +48,22 @@ def get_tuote(db: Session, tuote_id: str):
     return db.query(models.Tuote).filter(models.Tuote.id == tuote_id).first()
 
 
-def search_tuotteet(db: Session, search_term: str, skip: int = 0, limit: int = 100):
+def search_tuotteet(db: Session, search_term: str):
     """Haku tuotteiden nimestä tai koodista"""
     return db.query(models.Tuote).filter(
         or_(
             models.Tuote.id.ilike(f"%{search_term}%"),
             models.Tuote.nimi.ilike(f"%{search_term}%")
         )
-    ).offset(skip).limit(limit).all()
+    ).all()
 
 
-def get_tuotteet(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.Tuote).offset(skip).limit(limit).all()
+def get_tuotteet(db: Session):
+    return db.query(models.Tuote).all()
 
 
-def get_tuotteet_by_hyllypaikka(db: Session, hyllypaikka_id: str, skip: int = 0, limit: int = 100):
-    return db.query(models.Tuote).filter(models.Tuote.hyllypaikka_id == hyllypaikka_id).offset(skip).limit(limit).all()
+def get_tuotteet_by_hyllypaikka(db: Session, hyllypaikka_id: str):
+    return db.query(models.Tuote).filter(models.Tuote.hyllypaikka_id == hyllypaikka_id).all()
 
 
 def create_tuote(db: Session, tuote: schemas.TuoteCreate):

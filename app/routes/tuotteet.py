@@ -29,15 +29,13 @@ def create_tuote(tuote: schemas.TuoteCreate, db: Session = Depends(get_db)):
 
 @router.get("/", response_model=List[schemas.TuoteWithHyllypaikka])
 def read_tuotteet(
-    skip: int = 0, 
-    limit: int = 100, 
     search: Optional[str] = None,
     db: Session = Depends(get_db)
 ):
     if search:
-        tuotteet = crud.search_tuotteet(db, search_term=search, skip=skip, limit=limit)
+        tuotteet = crud.search_tuotteet(db, search_term=search)
     else:
-        tuotteet = crud.get_tuotteet(db, skip=skip, limit=limit)
+        tuotteet = crud.get_tuotteet(db)
     return tuotteet
 
 
@@ -55,8 +53,6 @@ def read_tuote(tuote_id: str, db: Session = Depends(get_db)):
 @router.get("/hyllypaikka/{hyllypaikka_id}", response_model=List[schemas.Tuote])
 def read_tuotteet_by_hyllypaikka(
     hyllypaikka_id: str, 
-    skip: int = 0, 
-    limit: int = 100, 
     db: Session = Depends(get_db)
 ):
     # Tarkistetaan että hyllypaikka on olemassa
@@ -67,7 +63,7 @@ def read_tuotteet_by_hyllypaikka(
             detail=f"Hyllypaikkaa id:llä {hyllypaikka_id} ei löydy"
         )
     return crud.get_tuotteet_by_hyllypaikka(
-        db, hyllypaikka_id=hyllypaikka_id, skip=skip, limit=limit
+        db, hyllypaikka_id=hyllypaikka_id
     )
 
 

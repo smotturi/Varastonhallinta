@@ -26,8 +26,8 @@ def create_hyllypaikka(hyllypaikka: schemas.HyllypaikkaCreate, db: Session = Dep
 
 
 @router.get("/", response_model=List[schemas.HyllypaikkaBase])
-def read_hyllypaikat(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    hyllypaikat = crud.get_hyllypaikat(db, skip=skip, limit=limit)
+def read_hyllypaikat(db: Session = Depends(get_db)):
+    hyllypaikat = crud.get_hyllypaikat(db)
     return hyllypaikat
 
 

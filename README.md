@@ -14,7 +14,7 @@ python -m uvicorn app.main:app --reload
 
 *go to localhost address shown in cmd*
 
-*Type in after local host address/docs to test app*
+*Type in after local host address "/docs" to test app*
 
 *EXITING*
 
