@@ -14,7 +14,7 @@
 
 ## go to localhost address 
 
-## Type in after local host address "/docs" to test app
+## Type in after local host address "/docs" to test app. Example "http://127.0.0.1:8000/docs"
 
 # EXITING
 
